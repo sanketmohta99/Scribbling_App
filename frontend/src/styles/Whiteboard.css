@@ -13,9 +13,9 @@
 
 .can{
 
-  border: 10px solid black;
-  width: 40vw;
-  height:100vh;
+  border: 10px solid blue;
+  /* width: 40vw;
+  height:40vh; */
   padding:10px;
 
 }

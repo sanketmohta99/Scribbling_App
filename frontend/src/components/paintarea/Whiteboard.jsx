@@ -6,11 +6,15 @@ const Whiteboard = () => {
   const contextRef = useRef(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current
+    const canvas = canvasRef.current;
     canvas.width = window.innerWidth * 2;
     canvas.height = window.innerHeight * 2;
-    canvas.style.width = `${window.innerWidth}px`;
+    canvas.style.width = `${window.innerWeight}px`;
     canvas.style.height = `${window.innerHeight}px`;
+
+   
+
+    
 
     const context = canvas.getContext("2d")
     context.scale(2, 2);
