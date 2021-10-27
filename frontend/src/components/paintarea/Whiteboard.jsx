@@ -9,8 +9,8 @@ const Whiteboard = () => {
     const canvas = canvasRef.current;
     canvas.width = window.innerWidth * 2;
     canvas.height = window.innerHeight * 2;
-    canvas.style.width = `${window.innerWeight}px`;
-    canvas.style.height = `${window.innerHeight}px`;
+    canvas.style.width = `100%`;
+    canvas.style.height = `90%`;
 
    
 
