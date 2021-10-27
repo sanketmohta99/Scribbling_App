@@ -1,10 +1,13 @@
 import io from "socket.io-client";
 import { useState, useEffect } from "react";
 import './App.css'
+import ChatArea from "./components/chattingarena/Chatarea";
+// import Drawarea from "./components/paintarea/Drawarea";
 
 const socket = io("localhost:5000");
 
 function App() {
+
   const [name, setName] = useState("");
   const [msg, setMsg] = useState("");
   const [chat, setChat] = useState([]);
@@ -52,73 +55,67 @@ function App() {
     }
   };
 
+
+
   return (
+
     <div className="App">
       <header className="App-header">
-        <h1 className="app_heading"> Hello {name} !! Start messaging</h1>
+      
+          {/* <Drawarea/> */}
 
-      <div className="username-header">
-        <input
-          type="text"
-          placeholder="Enter username"
-          className="username-field"
-          onChange={(event) => {
-            setName(event.target.value);
-          }}
-          required
-          disabled={disable_button}
-        />
+          
+          <h1 className="app_heading"> Hello {name} !! </h1>
 
-        <button
-          className="username-submit"
-          onClick={() => {
-            if (name !== "") {
-              setDisable_button(true);
-              setName (name);
-            }
-          }}
-          disabled={disable_button}
-        >
-          Enter
-        </button>
+           <div className="username-header">
+                <input
+                  type="text"
+                  placeholder="Enter username"
+                  className="username-field"
+                  onChange={(event) => {
+                    setName(event.target.value);
+                  }}
+                  required
+                  disabled={disable_button}
+                />
 
-        </div>
+                <button
+                  className="username-submit"
+                  onClick={() => {
+                    if (name !== "") {
+                      setDisable_button(true);
+                      setName (name);
+                    }
+                  }}
+                  disabled={disable_button}
+                >
+                  Enter
+                </button>
+
+            </div>
 
 
+          <ChatArea chat={chat}  />
+
+          <div id="chatter-form">
+              <input
+                type="text"
+                placeholder="Enter message"
+                className="message-field"
+                onChange={(event) => {
+                  setMsg(event.target.value);
+                }}
+                disabled={name!=="" ?wordset :true}
+              />
+
+              <button className="message-submit" onClick={addChat}>
+              <i class="fa fa-paper-plane-o" style={{fontSize:20}}></i>
+              </button>
+          </div>
 
 
+        
 
-
-        <div className="chat-area">
-          {chat.map((Obj) => {
-            return (
-
-              <span className="block">
-                <div key={Obj.id} className="person">{Obj.name}</div>
-                
-                <div className="text"> {Obj.msg} </div>
-                <br/>
-              </span>
-
-            );
-          })}
-        </div>
-
-        <form id="chatter-form">
-          <input
-            type="text"
-            placeholder="Enter message"
-            className="message-field"
-            onChange={(event) => {
-              setMsg(event.target.value);
-            }}
-            disabled={name!=="" ?wordset :true}
-          />
-
-          <button className="message-submit" onClick={addChat}>
-          <i class="fa fa-paper-plane-o" style={{fontSize:20}}></i>
-          </button>
-        </form>
       </header>
     </div>
   );

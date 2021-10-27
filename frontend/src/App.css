@@ -32,22 +32,30 @@
 
 .App {
   text-align: center;
+  /* display:flex;
+  flex-direction:column; */
+
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+  margin-left: auto;
+  margin-right: 0;
 } 
 
 .App-header {
   background-color: #1f242e;
-  min-height: 100vh;
+  height:100vh;
   display: flex;
   flex-direction: column;
+  width:45vw;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  margin-left: auto;
+  margin-right: 0;
 }
 
 .App-link {
@@ -101,17 +109,17 @@ input{
   border-width: 3px;
   padding:10px;
   background-color:rgb(238, 239, 243);
-  margin:auto;
-  -ms-align-items: center;
+  margin-top: 10%;  
+  /* vertical-align: center; */
+  
   justify-content:center ;
   align-items: center;
-  width:60vw;
+  width:30vw;
   max-height:50vh;
-  min-height:20vh;
+  min-height:50vh;
   border-radius: 20px;
   overflow-y: scroll ;
-border-color: white;
-border-style: solid;
+
 
 -webkit-box-shadow: -1px 0px 20px 19px rgba(84,86,133,1);
 -moz-box-shadow: -1px 0px 20px 19px rgba(84,86,133,1);
@@ -146,6 +154,7 @@ box-shadow: -1px 0px 20px 19px rgba(84,86,133,1);
     align-self: left;
     padding:2px 7px;
     color:#e9e9f0;
+    margin-top: 2px;
 
     /* align-self: left; */
 }
@@ -175,6 +184,11 @@ button {
   align-items: center;
   display:flex;
   flex-direction: row;
+  border-width: 3px;
+  border-color: aliceblue;
+  border-style: solid;
+  margin-top: 15%;  
+  
 }
 
 .message-field{
