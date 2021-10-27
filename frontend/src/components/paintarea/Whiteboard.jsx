@@ -7,10 +7,12 @@ const Whiteboard = () => {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    canvas.width = window.innerWidth * 2;
-    canvas.height = window.innerHeight * 2;
-    canvas.style.width = `100%`;
-    canvas.style.height = `90%`;
+    const wt=window.innerWidth* 0.5;
+    const ht=window.innerHeight* 0.9;
+    canvas.width = wt* 2;
+    canvas.height = ht * 2;
+    canvas.style.width = `${wt}px`;
+    canvas.style.height = `${ht}px`;
 
    
 
