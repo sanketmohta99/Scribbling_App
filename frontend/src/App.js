@@ -1,8 +1,11 @@
 import io from "socket.io-client";
 import { useState, useEffect } from "react";
-import './App.css'
+
 import ChatArea from "./components/chattingarena/Chatarea";
-// import Drawarea from "./components/paintarea/Drawarea";
+import Drawarea from "./components/paintarea/Drawarea.jsx";
+import './App.css';
+// import './styles/Drawarea.css'
+
 
 const socket = io("localhost:5000");
 
@@ -60,11 +63,12 @@ function App() {
   return (
 
     <div className="App">
+          <Drawarea />
+          
       <header className="App-header">
       
-          {/* <Drawarea/> */}
 
-          
+
           <h1 className="app_heading"> Hello {name} !! </h1>
 
            <div className="username-header">

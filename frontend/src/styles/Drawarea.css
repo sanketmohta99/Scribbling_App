@@ -1,0 +1,13 @@
+.draw_box
+{
+  height:100vh;
+  display: flex;
+  flex-direction: column;
+  width:50vw;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0;
+  margin-right: auto;
+
+  border: 10px solid black;
+}
