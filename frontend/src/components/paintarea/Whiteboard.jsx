@@ -53,10 +53,10 @@ const Whiteboard = () => {
   }, []);
 
 
-  // useEffect(  ()=>{
-  //   context.strokeStyle = col;
-  //   contextRef.current=context;
-  // }, [col]);
+  useEffect(  ()=>{
+    context.strokeStyle = col;
+    contextRef.current=context;
+  }, [col]);
 
   const startDrawing = ({ nativeEvent }) => {
     const { offsetX, offsetY } = nativeEvent;
