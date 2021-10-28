@@ -28,6 +28,12 @@ const event=
     socket.on('ans', (word)=>{
       answer_key=word;
     });
+
+
+    socket.on("drawingdata", (data)=>{
+
+        socket.broadcast.emit("drawingdata", data);
+    });
   
     socket.on("disconnect", () => { 
       console.log(`Client with ID : ${socket.id} is disconnected with backend`);

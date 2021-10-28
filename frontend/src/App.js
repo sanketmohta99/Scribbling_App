@@ -30,6 +30,11 @@ function App() {
         {setWordset(false);}
       setChat((_chat) => [..._chat, msg_obj]);
     });
+
+
+    
+
+
   }, []);
 
 
@@ -66,8 +71,6 @@ function App() {
           <Drawarea />
           
       <header className="App-header">
-      
-
 
           <h1 className="app_heading"> Hello {name} !! </h1>
 

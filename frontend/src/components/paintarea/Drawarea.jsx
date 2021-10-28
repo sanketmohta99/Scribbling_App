@@ -14,9 +14,7 @@ const Drawarea= ()=>{
               <Whiteboard />
           </div>
 
-          {/* <div className="Colorselector">
-            <input type="color" />
-          </div> */}
+          
       </div>
 
 

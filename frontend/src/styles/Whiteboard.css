@@ -4,9 +4,9 @@
   justify-content: center;
   align-items: center;
   vertical-align: center;
-  width:45vw;
+  width:99%;
   
-  height:100vh;
+  height:99%;
   border: 10px solid black;
 
 }
@@ -14,8 +14,8 @@
 .can{
 
   border: 10px solid blue;
-  /* width: 40vw;
-  height:40vh; */
+  /* width: 99%;
+  height:99%; */
   padding:10px;
 
 }
