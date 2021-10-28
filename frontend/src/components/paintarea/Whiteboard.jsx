@@ -7,26 +7,26 @@ const socket = io("localhost:5000");
 
 const Whiteboard = () => {
   const [isDrawing, setIsDrawing] = useState(false)
-  const canvasRef = useRef(null);
-  const contextRef = useRef(null);
+  const [col, setCol]=useState("black");
+  let canvasRef = useRef(null);
+  let contextRef = useRef(null);
+
+  let context; 
+  let canvas;
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    const wt=window.innerWidth* 0.5;
-    const ht=window.innerHeight*1;
+     canvas = canvasRef.current;
+    const wt=window.innerWidth* 0.52;
+    const ht=window.innerHeight*0.88;
     canvas.width = wt;
     canvas.height = ht ;
     canvas.style.width = `${wt}px`;
     canvas.style.height = `${ht}px`;
 
-   
-
+     context = canvas.getContext("2d");
     
-
-    const context = canvas.getContext("2d");
-    // context.scale(2, 2);
     context.lineCap = "round";
-    context.strokeStyle = "black";
+    context.strokeStyle = col;
     context.lineWidth = 5;
     contextRef.current = context;
 
@@ -34,7 +34,9 @@ const Whiteboard = () => {
 
         var img=new Image();
         var cnvs=canvasRef.current;
-        var ctx=cnvs.getContext('2d');
+       
+        var ctx=cnvs.getContext('2d'); 
+        
         img.onload= ()=>{
 
             ctx.drawImage(img,0,0);
@@ -44,15 +46,17 @@ const Whiteboard = () => {
       });    
 
 
-
-      socket.on("drawingdata",(data)=>{
+      socket.on("clearcanvas",(data)=>{
         contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);
-        
       });
 
+  }, []);
 
 
-  }, [])
+  // useEffect(  ()=>{
+  //   context.strokeStyle = col;
+  //   contextRef.current=context;
+  // }, [col]);
 
   const startDrawing = ({ nativeEvent }) => {
     const { offsetX, offsetY } = nativeEvent;
@@ -80,7 +84,7 @@ const Whiteboard = () => {
       socket.emit("drawingdata",base64ImgData);
       // var base64ImgData=context.getImageData
 
-    }, 500 );
+    }, 1000 );
 
   };
   return (
@@ -92,21 +96,35 @@ const Whiteboard = () => {
         ref={canvasRef}
         className="can"
       />
-      <div className="Clear">
-            <button
-            onClick={
-              ()=>{
-                contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);
-                // var base64ImgData=canvasRef.current.toDataURL("/image.png");
-                // socket.emit("drawingdata",base64ImgData);
-                socket.emit("clearcanvas",null);
 
 
-              }
-            }
-            >
-              CLEAR 
-            </button>
+
+         <div className="Clear">
+              
+              <input type="color"  className="colr_inp"   val ={col} defaultValue={"black"}
+                onChange={
+
+                  (e)=>{
+                    e.preventDefault();
+                    setCol(e.target.value) ;
+                    // contextRef.current.strokeStyle=e.target.value;
+                  }
+                }
+               />
+
+                <button className="removebtn"
+                onClick={
+                  ()=>{
+                    contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);
+                    // var base64ImgData=canvasRef.current.toDataURL("/image.png");
+                    // socket.emit("drawingdata",base64ImgData);
+                    socket.emit("clearcanvas",null);
+
+                  }
+                }
+                >
+                  CLEAR DRAWING
+                </button>
           </div>
     </>
   )

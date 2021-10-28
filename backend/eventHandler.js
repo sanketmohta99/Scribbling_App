@@ -37,7 +37,7 @@ const event=
 
     socket.on("clearcanvas", (data)=>{
 
-      socket.broadcast.emit("drawingdata", data);
+      socket.broadcast.emit("clearcanvas", data);
   });
   
     socket.on("disconnect", () => { 

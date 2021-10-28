@@ -4,18 +4,52 @@
   justify-content: center;
   align-items: center;
   vertical-align: center;
-  width:99%;
+  width:55vw;
   
-  height:99%;
-  border: 10px solid black;
+  height:99vh;
+  border: 1px solid black;
 
 }
 
+.Clear{
+  justify-content: center;
+  align-items: center;
+  width:50%;
+  height:5%;
+  margin:auto;
+  vertical-align: center;
+
+}
+.colr_inp{
+  margin-right: 10px;
+  width:20%;
+  height: 99%;
+  border-radius: 10px;
+  cursor: pointer;
+
+}
+.removebtn{
+  padding: 10px;
+  border-radius: 10px;
+  width:50%;
+  background-color:#4ab0b6 ;
+  height:80%; 
+  color:black;
+  margin-left: 10px;
+  font-size: 18px;
+  align-items: center;
+  display:inline-flex;
+  text-align: center;
+  font-weight: bold;
+
+}
 .can{
 
-  border: 10px solid blue;
+  border: 10px solid #4ab0b6;
   /* width: 99%;
   height:99%; */
   padding:10px;
+  border-radius:10px;
+  border-style:groove;
 
 }
