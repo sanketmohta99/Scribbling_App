@@ -45,6 +45,13 @@ const Whiteboard = () => {
 
 
 
+      socket.on("drawingdata",(data)=>{
+        contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);
+        
+      });
+
+
+
   }, [])
 
   const startDrawing = ({ nativeEvent }) => {
@@ -69,10 +76,11 @@ const Whiteboard = () => {
 
     setTimeout( ()=>{
       var base64ImgData=canvasRef.current.toDataURL("/image.png");
+      
       socket.emit("drawingdata",base64ImgData);
       // var base64ImgData=context.getImageData
 
-    }, 1000 );
+    }, 500 );
 
   };
   return (
@@ -89,8 +97,10 @@ const Whiteboard = () => {
             onClick={
               ()=>{
                 contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);
-                var base64ImgData=canvasRef.current.toDataURL("/image.png");
-                socket.emit("drawingdata",base64ImgData);
+                // var base64ImgData=canvasRef.current.toDataURL("/image.png");
+                // socket.emit("drawingdata",base64ImgData);
+                socket.emit("clearcanvas",null);
+
 
               }
             }

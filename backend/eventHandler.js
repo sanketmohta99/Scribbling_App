@@ -34,6 +34,11 @@ const event=
 
         socket.broadcast.emit("drawingdata", data);
     });
+
+    socket.on("clearcanvas", (data)=>{
+
+      socket.broadcast.emit("drawingdata", data);
+  });
   
     socket.on("disconnect", () => { 
       console.log(`Client with ID : ${socket.id} is disconnected with backend`);
