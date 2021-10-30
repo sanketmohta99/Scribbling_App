@@ -6,7 +6,6 @@ const io = require("socket.io")(httpServer, { cors: "*" });
 
 const PORT = 5000;
 
-
 const eventhandler=require('./eventHandler.js')(io);
 
 

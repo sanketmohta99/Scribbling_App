@@ -26,7 +26,7 @@ function App() {
 
     socket.on("chat", (msg_obj) => {
       const sender_name=msg_obj.name;
-      if(sender_name==="SKETCHIO_BOT")
+      if(sender_name=="SKETCHIO_BOT")
         {setWordset(false);}
       setChat((_chat) => [..._chat, msg_obj]);
     });
@@ -39,13 +39,13 @@ function App() {
 
 
   const addChat = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     const id = socket.id;
 
     let word=msg;
-    if(word.startsWith('!') )
+    if( wordset==false && word.startsWith('!'))
     {
-      setWordset(true);
+      setWordset(true); // secret word is now set
 
       word=word.slice(1);
       socket.emit('ans',word);
@@ -53,8 +53,6 @@ function App() {
     }
     else
     {
-
-
       if(msg!=="")
         {socket.emit("message", { id, msg, name });
         setMsg("");
@@ -115,8 +113,8 @@ function App() {
                 disabled={name!=="" ?wordset :true}
               />
 
-              <button className="message-submit" onClick={addChat}>
-              <i class="fa fa-paper-plane-o" style={{fontSize:20}}></i>
+              <button className="message-submit" onClick={addChat} disabled={name!=="" ?wordset :true}>
+              <i className="fa fa-paper-plane-o" style={{fontSize:20}}></i>
               </button>
           </div>
 

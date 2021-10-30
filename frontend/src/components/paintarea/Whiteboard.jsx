@@ -8,14 +8,15 @@ const socket = io("localhost:5000");
 const Whiteboard = () => {
   const [isDrawing, setIsDrawing] = useState(false)
   const [col, setCol]=useState("black");
+  const [strwid, setStrwid]=useState(5);
+
   let canvasRef = useRef(null);
   let contextRef = useRef(null);
 
-  let context; 
-  let canvas;
 
   useEffect(() => {
-     canvas = canvasRef.current;
+    // console.log("Eff1");
+     let canvas = canvasRef.current;
     const wt=window.innerWidth* 0.52;
     const ht=window.innerHeight*0.88;
     canvas.width = wt;
@@ -23,7 +24,7 @@ const Whiteboard = () => {
     canvas.style.width = `${wt}px`;
     canvas.style.height = `${ht}px`;
 
-     context = canvas.getContext("2d");
+     let context = canvas.getContext("2d");
     
     context.lineCap = "round";
     context.strokeStyle = col;
@@ -54,9 +55,16 @@ const Whiteboard = () => {
 
 
   useEffect(  ()=>{
-    context.strokeStyle = col;
-    contextRef.current=context;
+    // console.log("Eff2");
+    // context.strokeStyle = col;
+    contextRef.current.strokeStyle=col;
   }, [col]);
+
+  useEffect(  ()=>{
+    // console.log("Eff3");
+    // context.strokeStyle = col;
+    contextRef.current.lineWidth =strwid;
+  }, [strwid]);
 
   const startDrawing = ({ nativeEvent }) => {
     const { offsetX, offsetY } = nativeEvent;
@@ -84,9 +92,10 @@ const Whiteboard = () => {
       socket.emit("drawingdata",base64ImgData);
       // var base64ImgData=context.getImageData
 
-    }, 1000 );
+    }, 500 );
 
   };
+
   return (
     <>
       <canvas
@@ -100,8 +109,19 @@ const Whiteboard = () => {
 
 
          <div className="Clear">
+
+            <input type="range"  min="5" max="25" className="Slider" defaultValue="5" 
+                onChange={
+                (e)=>{
+                  // e.preventDefault();
+                  setStrwid(e.target.value) ;
+                  // contextRef.current.strokeStyle=e.target.value;
+                }
+                }
+
+            />
               
-              <input type="color"  className="colr_inp"   val ={col} defaultValue={"black"}
+              <input type="color"  className="colr_inp"   val ={col} defaultValue={"black"} 
                 onChange={
 
                   (e)=>{

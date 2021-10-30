@@ -39,7 +39,7 @@
 
 .App-header {
   background-color: #1f242e;
-  height:100vh;
+  height:98vh;
   display: flex;
   flex-direction: column;
   width:45vw;
@@ -49,6 +49,8 @@
   color: white;
   margin-left: auto;
   margin-right: 0;
+  border: 8px double #61cbd1;
+  border-radius: 10px;
 }
 
 .App-link {
@@ -78,7 +80,7 @@ input{
   font-weight: bold;
   border-radius: 20px 0px 0px 20px ;
   margin-right:10px;
-  
+  font-family:monospace;
   border:5px solid white;
   background-color: rgba(0,0,0,0);
   outline:none;
@@ -87,13 +89,14 @@ input{
 .username-header{
   display:flex;
   justify-content: center;
-
+  
 
 }
 
 .username-submit{
   border-radius: 0px 20px 20px 0px;
   width:60px;
+  
   font-size: 15px;
   align-content: center;
 }
@@ -140,7 +143,7 @@ box-shadow: -1px 0px 20px 19px rgba(84,86,133,1);
     
     font-weight:bold;
     background-color:#3d434e;
-
+    font-family: monospace;
     font-size:23px;
     border-radius: 15px;
     min-width:70px;
@@ -155,6 +158,7 @@ box-shadow: -1px 0px 20px 19px rgba(84,86,133,1);
 
 .text{
   background-color: rgb(156, 155, 155);
+  
   color: black;
   min-width:70%;
   border-radius: 6px;
@@ -167,7 +171,8 @@ box-shadow: -1px 0px 20px 19px rgba(84,86,133,1);
 
 button {
   cursor: pointer;
-  background-color:#4ea2a7;
+  background-color:#61cbd1;
+  font-weight: bold;
 }
 
 
@@ -177,9 +182,9 @@ button {
   align-items: center;
   display:flex;
   flex-direction: row;
-  border-width: 3px;
-  border-color: aliceblue;
-  border-style: solid;
+  
+  
+  
   margin-top: 10%;  
   
 }
@@ -193,7 +198,9 @@ button {
   font-size: 20px;
   padding:5px;
   font-weight: bold;
-  font-family: Helvetica;
+  font-family:'Courier New', Courier, monospace;
+  background-color:rgb(255, 255, 255);
+  color: rgb(14, 2, 2)
   
 }
 
@@ -205,8 +212,17 @@ button {
   
 }
 
-button:hover{
+button:hover:enabled{
   background-color:#0f6f74;
   color:white;
+  font-weight: bold;
+  cursor: pointer;
 }
-
+button:disabled{
+  background-color:rgba(126, 124, 124, 0.226);
+  cursor:not-allowed;
+}
+input:disabled{
+  background-color:grey;
+  cursor:not-allowed;
+}

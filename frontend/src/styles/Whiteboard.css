@@ -5,9 +5,7 @@
   align-items: center;
   vertical-align: center;
   width:55vw;
-  
   height:99vh;
-  border: 1px solid black;
 
 }
 
@@ -31,8 +29,8 @@
 .removebtn{
   padding: 10px;
   border-radius: 10px;
-  width:50%;
-  background-color:#4ab0b6 ;
+  width:45%;
+  background-color:#61cbd1 ;
   height:80%; 
   color:black;
   margin-left: 10px;
@@ -45,11 +43,25 @@
 }
 .can{
 
-  border: 10px solid #4ab0b6;
+  border: 10px groove #6bd9df;
   /* width: 99%;
   height:99%; */
-  padding:10px;
-  border-radius:10px;
-  border-style:groove;
+  padding:3px;
+  border-radius:15px;
+  cursor:crosshair;
+  /* border-style:groove; */
+  background-color:whitesmoke;
+  
 
+}
+
+.Slider{
+  width:10%;
+  height:10px;
+  
+  outline:none;
+  
+  margin-right: 10px; 
+  cursor: pointer; 
+  
 }
